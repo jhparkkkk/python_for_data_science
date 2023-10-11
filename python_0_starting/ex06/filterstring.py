@@ -4,7 +4,8 @@ import re
 
 def main():
     """
-    The program should output a list of words from S that have a length greater than N.
+    The program should output a list of words from S \
+        that have a length greater than N.
     Args:
         S(str): The string to analyze
         N(int): min len a word must be to get output
@@ -31,7 +32,8 @@ def main():
         problemo_list = list(problemo)
         # if problemo_list is not empty then there's issue with argv[1]!
         if problemo_list:
-            raise AssertionError("Argument should contain only alphanumeric characters")
+            raise AssertionError("Argument should contain only \
+                                 alphanumeric characters")
         # get min_len from argv[2]
         min_len = int(sys.argv[2])
         # filtering list using list comprehension

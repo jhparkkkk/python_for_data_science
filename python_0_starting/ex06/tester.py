@@ -7,7 +7,8 @@ def is_even(x):
 
 
 def is_exoplanet(name):
-    exoplanets = ("Kepler-186f", "TrES-2b", "WASP-39b", "HD209458b", "Gliese 581g")
+    exoplanets = \
+        ("Kepler-186f", "TrES-2b", "WASP-39b", "HD209458b", "Gliese 581g")
     return name in exoplanets
 
 

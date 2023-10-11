@@ -1,8 +1,5 @@
-import time
 import sys
-
 import shutil
-from colorama import Fore
 
 
 def get_terminal_width():
@@ -22,6 +19,7 @@ def ft_tqdm(iterable):
             continue
         percent = int(100 * (i / total))
         bar_length = int((columns - loading_display) * percent / 100)
-        bar = "=" * bar_length + ">" + " " * ((columns - loading_display) - bar_length)
+        bar = "=" * bar_length + ">" + " " \
+            * ((columns - loading_display) - bar_length)
         sys.stdout.write(f"\r{percent}%|{bar}| {i}/{total}")
         sys.stdout.flush()

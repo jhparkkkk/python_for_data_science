@@ -18,7 +18,7 @@ def NULL_not_found(object: any) -> int:
             message = "Type not found"
 
     if message == "Fake":
-        if value != False:
+        if value is not False:
             message = "Type not found"
 
     if message == "Zero":

@@ -23,7 +23,7 @@ def getUserInput():
         else:
             userInput = sys.argv[1]
 
-        print(f"user input is:", userInput, "|")
+        print(f"user input is: {userInput} |")
         return userInput
     except AssertionError as e:
         print("AssertionError:", e)
