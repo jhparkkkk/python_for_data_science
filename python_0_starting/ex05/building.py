@@ -11,19 +11,19 @@ def getUserInput():
     Returns:
         str: input provided by the user
     """
+    userInput = ''
     try:
         assert len(sys.argv) <= 2, "Only one argument allowed"
         if len(sys.argv) == 1:
-            userInput = input("What is the text to count?\n")
-
-            if userInput == "":
-                getUserInput()
-                exit()
-            userInput = userInput.replace("\r", " ")
+            while (True):
+                try:
+                    userInput = input("What is the text to count?\n")
+                    return userInput + '\r'
+                except EOFError:
+                    return userInput
+                    exit()
         else:
             userInput = sys.argv[1]
-
-        print(f"user input is: {userInput} |")
         return userInput
     except AssertionError as e:
         print("AssertionError:", e)
@@ -71,7 +71,7 @@ def countCharacters(userInput: str):
                 characterType["spaces"] += 1
             characterType["punctuation marks"] += 1
 
-    print(f"The text contains {len(userInput)} characters:")
+    print(f"\rThe text contains {len(userInput)} characters:")
     for element in characterType:
         print(f"{characterType[element]} {element}")
 
@@ -81,6 +81,5 @@ def main():
     countCharacters(userInput)
 
 
-# your tests and your error handling
 if __name__ == "__main__":
     main()

@@ -3,11 +3,24 @@ import shutil
 
 
 def get_terminal_width():
+    """
+    Get current terminal size to get the right display size
+
+    Returns:
+        columns(int): number of columns
+    """
     terminal_size = shutil.get_terminal_size()
     return terminal_size.columns
 
 
 def ft_tqdm(iterable):
+    """
+    Reproduce tqdm(): make a loop shows a smart progress meter
+
+    Args:
+        iterable(range): range object to loop in
+
+    """
     columns = get_terminal_width()
     total = len(iterable)
     len_total = len(str(total))
