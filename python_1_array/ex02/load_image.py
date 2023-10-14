@@ -1,11 +1,19 @@
 
-from imageio.v3 import imread, immeta
+from imageio.v3 import imread
 from filetype import is_image
 from pathlib import Path
-from os import access, R_OK
 
 
 def ft_load(path: str) -> list:
+    """ loads an image, prints its format, and its pixels
+content in RGB format.
+
+    Args:
+        path (str): path of the image file
+
+    Returns:
+        list (int): pixels values in RGB format
+    """
     try:
         # check if file exist
         path = Path(path)
