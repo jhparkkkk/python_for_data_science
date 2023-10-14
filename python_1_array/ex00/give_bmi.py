@@ -1,7 +1,9 @@
-import numpy as np
+from numpy import square
 
 
 def is_int_or_float(value) -> bool:
+    if isinstance(value, bool):
+        raise AssertionError()
     return isinstance(value, (int, float))
 
 
@@ -31,7 +33,7 @@ def give_bmi(
         for weight_value, height_value in zip(weight, height):
             assert is_int_or_float(weight_value), "value must be int or float"
             assert is_int_or_float(height_value), "value must be int or float"
-            bmi_results.append(weight_value / np.square(height_value))
+            bmi_results.append(weight_value / square(height_value))
         return bmi_results
     except AssertionError as assertion_error:
         print(f"AssertionError: {assertion_error}\n")
@@ -53,8 +55,11 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
         assert len(bmi) != 0, "bmi list is empty"
         for value in bmi:
             assert is_int_or_float(value), "value must be int or float"
+        if isinstance(limit, bool):
+            raise AssertionError("limit must not be boolean")
         assert limit >= 0 and isinstance(limit, int), "limit must be positive"
         assert isinstance(limit, int), "limit must be a positive int"
-        return list(map(lambda value: value <= limit, bmi))
+        return list(map(lambda value: value >= limit, bmi))
     except AssertionError as assertion_error:
         print(f"AssertionError: {assertion_error}\n")
+        return None
