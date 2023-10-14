@@ -4,6 +4,15 @@ from pathlib import Path
 
 
 def ft_load(path: str) -> list:
+    """ loads an image, prints its format, and its pixels
+content in RGB format.
+
+    Args:
+        path (str): path of the image file
+
+    Returns:
+        list (int): pixels values in RGB format
+    """
     try:
         # check if file exist
         path = Path(path)
@@ -18,4 +27,3 @@ def ft_load(path: str) -> list:
         raise (error)
     except PermissionError as error:
         raise (error)
-
