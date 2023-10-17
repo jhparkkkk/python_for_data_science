@@ -1,15 +1,23 @@
-import pathlib as pathlib
 import pandas as pd
-import seaborn as sns
 
 
 def load(path: str) -> pd.core.frame.DataFrame:
-    try:
-        dataframe = pd.read_csv(path)
-        print(dataframe.shape)
+    """Loads data from .csv file writes the dimensions of the data set
+and returns it
 
+    Args:
+        path (str): .csv file
+    Returns:
+        pd.core.frame.DataFrame: pandas dataframe
+    """
+    try:
+        assert path.endswith('.csv'), "not a csv file"
+        dataframe = pd.read_csv(path)
+        print(f"Loading dataset of dimensions {dataframe.shape}")
         return dataframe
+    except AssertionError as error:
+        raise (error)
     except Exception as error:
-        print(f"CSV file not valid: {error}")
+        raise (error)
     except FileNotFoundError as error:
-        print(error)
+        raise (error)
