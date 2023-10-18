@@ -1,9 +1,10 @@
-import matplotlib.pyplot as plt
 from load_csv import load
-from pandas.core.frame import DataFrame
+import matplotlib.pyplot as plt
+import pandas as pd
 
 
-def get_country_data(df: DataFrame, country: str) -> DataFrame:
+def get_country_data(df: pd.core.frame.DataFrame,
+                     country: str) -> pd.core.frame.DataFrame:
     """from dataframe select row `country`
     Args:
         dataframe (pd.core.frame.DataFrame): dataframe to filter

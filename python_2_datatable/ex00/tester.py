@@ -3,6 +3,8 @@ from unittest import TestCase, main
 
 
 def test_mandatory():
+    """test mandatory test
+    """
     print(load("life_expectancy_years.csv"))
 
 
