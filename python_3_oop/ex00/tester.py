@@ -1,29 +1,82 @@
 from S1E9 import Character, Stark
+import unittest as ut
 
 
-Ned = Stark("Ned")
+def test_mandatory():
+    Ned = Stark("Ned")
+    print(Ned.__dict__)
+    print(Ned.is_alive)
+    Ned.die()
+    print(Ned.is_alive)
+    print(Ned.__doc__)
+    print(Ned.__init__.__doc__)
+    print(Ned.die.__doc__)
+    print("---")
+    Lyanna = Stark("Lyanna", False)
+    print(Lyanna.__dict__)
 
-print(Ned.__dict__)
+    try:
+        hodor = Character("hodor")
+        print(hodor.__doc__)
+    except TypeError as error:
+        print(f"TypeError: {error}")
 
-print(Ned.is_alive)
 
-Ned.die()
+class testStarckClass(ut.TestCase):
+    """test Starck class
 
-print(Ned.is_alive)
+    Args:
+        ut (unittest.TestCase): module for ut
+    """
 
-print(Ned.__doc__)
+    def test_invalid_first_name(self):
+        """test Starck class instanciation with invalid first_name param
+        """
+        with self.assertRaises(AssertionError) as cm:
+            Stark(42)
+        self.assertEqual(str(cm.exception), 'first_name must be str')
 
-print(Ned.__init__.__doc__)
+        with self.assertRaises(AssertionError):
+            Stark({})
 
-print(Ned.die.__doc__)
+        with self.assertRaises(AssertionError) as cm:
+            Stark(3.14)
+        self.assertEqual(str(cm.exception), 'first_name must be str')
 
-print("---")
+        with self.assertRaises(AssertionError):
+            Stark(False)
 
-Lyanna = Stark("Lyanna", False)
+    def test_invalid_is_alive(self):
+        """test Starck class instanciation with invalid is_alive param
+        """
+        with self.assertRaises(AssertionError) as cm:
+            Stark("Ned", 123)
+        self.assertEqual(str(cm.exception), 'is_alive must be bool')
 
-print(Lyanna.__dict__)
+        with self.assertRaises(AssertionError):
+            Stark("to", "to")
+        with self.assertRaises(AssertionError) as cm:
+            Stark("Ned", [[[]]])
+        self.assertEqual(str(cm.exception), 'is_alive must be bool')
 
-try:
-    hodor = Character("hodor")
-except Exception as error:
-    print(error)
+        with self.assertRaises(AssertionError):
+            Stark("to", "false")
+
+
+class testCharacterClass(ut.TestCase):
+    """test Character class instantiation
+     Args:
+        ut (unittest.TestCase): module for ut
+    """
+
+    def test_instantiate_with_abstract_method(self):
+        """test if abstract class Character containing an abstract method
+raises error in case it is instanciated.
+        """
+        with self.assertRaises(TypeError):
+            Character('Ned')
+
+
+if __name__ == "__main__":
+    test_mandatory()
+    ut.main()
