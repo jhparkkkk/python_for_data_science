@@ -1,23 +1,43 @@
 from typing import Any
 
-# mean
-# median
-# quartile
-# std
-# var
 
+def mean(data_list: list) -> int | float:
+    """calculate average of a given list of numbers
+    mean = (sum of observations) ÷ (total number of observations)
+    Args:
+        data_list (list): data set to operate on
 
-def mean(data_list: list):
+    Returns:
+        int | float: means of the data set passed as parameters
+    """
     return (sum(data_list) / len(data_list))
 
 
-def median(data_list: list):
+def median(data_list: list) -> int | float:
+    """Calculates the middle value of the given data set.
+    Median = {(n + 1) / 2}th
+
+    Args:
+        data_list (list): data set to operate on
+
+    Returns:
+        int | float: the middle value
+    """
     sorted_list = sorted(data_list)
     res = sorted_list[len(sorted_list)//2]
     return res
 
 
-def quartile(data_list: list):
+def quartile(data_list: list) -> list[float]:
+    """Calculate the values that separate the data into four equal parts
+
+    Args:
+        data_list (list): data set to operate on
+
+    Returns:
+        list[int | float]: list containing first quartile and third quartile
+    """
+
     sorted_list = sorted(data_list)
     middle = len(sorted_list)//2
     quartiles_list = []
@@ -26,11 +46,30 @@ def quartile(data_list: list):
     return quartiles_list
 
 
-def std(data_list: list):
+def std(data_list: list) -> float:
+    """Calculate the standard deviation : describe the variation
+of data points meaning
+    how close they are to the mean.
+
+    Args:
+        data_list (list): data set to operate on
+
+    Returns:
+        float: the standard deviation value
+    """
     return var(data_list) ** (1/2)
 
 
-def var(data_list: list):
+def var(data_list: list) -> float:
+    """Calculate the variance ofthe given data.
+A large variance indicates that the data is spread out
+
+    Args:
+        data_list (list): data set to operate on
+
+    Returns:
+        float: the variance value
+    """
     mean_value = mean(data_list)
     variance_value = 0
     for value in data_list:
@@ -40,6 +79,10 @@ def var(data_list: list):
 
 
 def ft_statistics(*args: Any, **kwargs: Any) -> None:
+    """make the Mean, Median,
+Quartile (25% and 75%), Standard Deviation and Variance
+according to the **kwargs
+    """
     statistics_dict = {
         "mean": mean,
         "median": median,

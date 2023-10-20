@@ -1,7 +1,7 @@
 from statistics import ft_statistics
 
 
-def main():
+def test_mandatory():
     ft_statistics(1, 42, 360, 11, 64, toto="mean",
                   tutu="median", tata="quartile")
     print("-----")
@@ -14,4 +14,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    test_mandatory()

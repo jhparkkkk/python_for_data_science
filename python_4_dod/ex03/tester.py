@@ -5,6 +5,25 @@ print(student)
 
 try:
     student = Student(name="Edward", surname="agle", id="toto")
-    print(student)
+except TypeError as error:
+    print(f"TypeError: {error}")
+
+try:
+    student = Student(name="Edward", surname="agle", active=True)
+except TypeError as error:
+    print(f"TypeError: {error}")
+
+try:
+    student = Student(name="Edward", surname="agle", plop="plop")
+except TypeError as error:
+    print(f"TypeError: {error}")
+
+try:
+    student = Student(name=2313, surname="agle")
+except TypeError as error:
+    print(f"TypeError: {error}")
+
+try:
+    student = Student(name="toto", surname=True)
 except TypeError as error:
     print(f"TypeError: {error}")

@@ -2,6 +2,15 @@ from typing import Any
 
 
 def callLimit(limit: int):
+    """Limit function calling by counting it.
+If limit is reached print error
+
+    Args:
+        limit (int): limit of calling function
+
+    Returns:
+        function(*arg, *kwds): the called function
+    """
     count = 0
 
     def callLimiter(function):
